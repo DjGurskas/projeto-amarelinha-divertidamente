@@ -1,12 +1,12 @@
-#Divertidamente
+## Divertidamente
 
 Integrantes:
 
-Bianca Gomes
-Christian Valini
-Denison Barcelos
-Djênifer Gurskas
-Marco Marchi
+- Bianca Gomes
+- Christian Valini
+- Denison Barcelos
+- Djênifer Gurskas
+- Marco Marchi
 
 Para entrega:
 
