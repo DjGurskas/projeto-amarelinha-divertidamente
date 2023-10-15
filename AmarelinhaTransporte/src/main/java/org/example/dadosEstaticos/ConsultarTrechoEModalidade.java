@@ -1,4 +1,4 @@
-package org.example;
+package org.example.dadosEstaticos;
 import java.util.Scanner;
 
 // consultar trechos e modalidades. Funcionalidade 1

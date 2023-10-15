@@ -1,4 +1,4 @@
-package org.example;
+package org.example.dadosEstaticos;
 
 //Criado para conseguir fazer e testar os dados estatisticos, baseado no cenario 1
 public enum TipoItem { //tipo de item e seu peso utilizando o enum
