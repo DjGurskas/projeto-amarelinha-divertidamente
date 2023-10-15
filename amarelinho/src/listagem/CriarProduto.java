@@ -43,6 +43,7 @@ public class CriarProduto {
                 System.out.println("Lavadora de Roupa,");
                 System.out.println("PlayStation 5 ou");
                 System.out.println("Nintendo Switch");
+                System.out.println("\n");
                 System.out.println("Você vai querer qual? ");
                 String nomeAdicionar = scanner.nextLine();
                 Produto produtoAdicionar = procurarProdutoPorNome(nomeAdicionar, celular, geladeira, airFryer, cadeira, luminaria, lavadoraRoupa, playstation5, nintendoSwitch);
@@ -52,6 +53,7 @@ public class CriarProduto {
                     produtoAdicionar.setQuantidade(quantidade);
                     produtosSelecionados.add(produtoAdicionar);
                     System.out.println("Produto adicionado: " + produtoAdicionar.getNome() + " (Quantidade: " + quantidade + ")");
+                    System.out.println("\n");
                 } else {
                     System.out.println("Produto não encontrado. Tente novamente.");
                 }
@@ -69,9 +71,14 @@ public class CriarProduto {
             } else if (opcao == 3) {
                 // Ver lista dos produtos selecionados
                 System.out.println("Produtos selecionados para transporte:");
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                double pesoTotal = 0.0;
                 for (Produto produto : produtosSelecionados) {
-                    System.out.println("Nome: " + produto.getNome() + " (Quantidade: " + produto.getQuantidade() + "), Peso Total: " + (produto.getPeso() * produto.getQuantidade()) + " kg");
+                    double pesoProduto = produto.getPeso() * produto.getQuantidade();
+                    pesoTotal += pesoProduto;
+                    System.out.println("Nome: " + produto.getNome() + " (Quantidade: " + produto.getQuantidade() + "), Peso Total: " + df.format(pesoProduto) + " kg");
                 }
+                System.out.println("Peso total dos produtos: " + df.format(pesoTotal) + " kg");
             } else if (opcao == 4) {
                 // Sair do programa
                 break;
