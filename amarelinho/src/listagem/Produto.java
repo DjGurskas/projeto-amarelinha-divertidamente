@@ -1,13 +1,14 @@
 package listagem;
-//Referencia Java
+//Referencia java
 public class Produto {
     private String nome;
     private double peso;
+    private int quantidade;
 
-    //metodo
     public Produto(String nome, double peso) {
         this.nome = nome;
         this.peso = peso;
+        this.quantidade = 0;
     }
 
     public String getNome() {
@@ -18,5 +19,11 @@ public class Produto {
         return peso;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
 
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 }
