@@ -20,4 +20,9 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
     public double getCapacidadeMaxima() {
         return capacidadeMaxima;
     }
+
+    @Override
+    public String toString() {
+        return this.name() + " -- " + this.capacidadeMaxima + " -- " + this.precoPorQuilometro;
+    }
 }
