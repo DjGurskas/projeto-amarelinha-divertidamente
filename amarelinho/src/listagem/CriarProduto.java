@@ -21,6 +21,9 @@ public class CriarProduto {
         List<Produto> produtosSelecionados = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
+        // Variável para acumular o peso total
+        double pesoTotalSaida = 0.0;
+
         // Loop principal para adicionar, remover, ver a lista ou sair
         while (true) {
             System.out.println("Escolha uma opção:");
@@ -81,6 +84,14 @@ public class CriarProduto {
                 System.out.println("Peso total dos produtos: " + df.format(pesoTotal) + " kg");
             } else if (opcao == 4) {
                 // Sair do programa
+                // Calcular e exibir o peso total dos produtos
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                for (Produto produto : produtosSelecionados) {
+                    double pesoProduto = produto.getPeso() * produto.getQuantidade();
+                    pesoTotalSaida += pesoProduto;
+                }
+                System.out.println("Peso total dos produtos ao sair do programa: " + df.format(pesoTotalSaida) + " kg");
+                System.out.println("Obrigado por usar a Amarelinha. Volte sempre!");
                 break;
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
