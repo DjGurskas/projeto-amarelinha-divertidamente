@@ -1,11 +1,13 @@
 package listagem;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class CriarProduto {
     public static void main(String[] args) {
-        // Produtos e suas instancias
+        // Produtos e suas instâncias
         Produto celular = new Produto("Celular", 0.7);
         Produto geladeira = new Produto("Geladeira", 50);
         Produto airFryer = new Produto("Air Fryer", 3.5);
@@ -19,12 +21,13 @@ public class CriarProduto {
         List<Produto> produtosSelecionados = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        // Loop principal para adicionar, remover ou sair
+        // Loop principal para adicionar, remover, ver a lista ou sair
         while (true) {
             System.out.println("Escolha uma opção:");
             System.out.println("1. Adicionar produto");
             System.out.println("2. Remover produto");
-            System.out.println("3. Sair do programa");
+            System.out.println("3. Ver lista de produtos selecionados");
+            System.out.println("4. Sair do programa");
             System.out.print("Opção: ");
 
             int opcao = scanner.nextInt();
@@ -64,6 +67,12 @@ public class CriarProduto {
                     System.out.println("Produto não encontrado na lista.");
                 }
             } else if (opcao == 3) {
+                // Ver lista dos produtos selecionados
+                System.out.println("Produtos selecionados para transporte:");
+                for (Produto produto : produtosSelecionados) {
+                    System.out.println("Nome: " + produto.getNome() + " (Quantidade: " + produto.getQuantidade() + "), Peso Total: " + (produto.getPeso() * produto.getQuantidade()) + " kg");
+                }
+            } else if (opcao == 4) {
                 // Sair do programa
                 break;
             } else {
@@ -71,23 +80,25 @@ public class CriarProduto {
             }
         }
 
-        // Lista os produtos selecionados
-        System.out.println("Produtos selecionados para transporte:");
-        for (Produto produto : produtosSelecionados) {
-            System.out.println("Nome: " + produto.getNome() + " (Quantidade: " + produto.getQuantidade() + "), Peso: " + produto.getPeso() + " kg");
-        }
-
         scanner.close();
     }
 
-    // Método pra procurar um produto pelo seu nome
+    // Método pra procurar o produto pelo nome
     public static Produto procurarProdutoPorNome(String nome, Produto... produtos) {
         for (Produto produto : produtos) {
             if (produto.getNome().equalsIgnoreCase(nome)) {
                 return new Produto(produto.getNome(), produto.getPeso());
             }
         }
-        return null; // Se não achar o produto
+        return null; // SE não achar o produto
     }
 }
+/*
+
+        ──────▄▀▄─────▄▀▄
+        ─────▄█░░▀▀▀▀▀░░█▄
+        ─▄▄──█░░░░░░░░░░░█──▄▄ Marco Marchi passou por aqui.
+        █▄▄█─█░░▀░░┬░░▀░░█─█▄▄█
+
+ */
 

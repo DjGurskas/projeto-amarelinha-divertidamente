@@ -12,4 +12,11 @@ public class ListaProdutosSelecionados {
     public List<Produto> getProdutosSelecionados() {
         return produtosSelecionados;
     }
-}
+}/*
+
+        ──────▄▀▄─────▄▀▄
+        ─────▄█░░▀▀▀▀▀░░█▄
+        ─▄▄──█░░░░░░░░░░░█──▄▄ Marco Marchi passou por aqui.
+        █▄▄█─█░░▀░░┬░░▀░░█─█▄▄█
+
+ */
