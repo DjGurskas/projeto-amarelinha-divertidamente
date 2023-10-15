@@ -9,6 +9,7 @@ public class DistanciaCidades {
     private String[][] linhas = new String[25][24];
 
     public void exibirCidades() {
+        carregaCidades();
         System.out.println(Arrays.toString(this.linhas[0]));
     }
 
@@ -41,7 +42,7 @@ public class DistanciaCidades {
             System.out.println("Erro ao ler o arquivo:" + exception);
         }
     }
-    public int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
+    public static int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
 
             try {
                 int indiceDaCidadeUm = this.indexOf(cidadeUm);

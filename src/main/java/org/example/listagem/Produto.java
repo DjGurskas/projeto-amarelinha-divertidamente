@@ -1,4 +1,6 @@
 package org.example.listagem;
+import java.util.Scanner;
+
 //Referencia java
 public class Produto {
     private String nome;

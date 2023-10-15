@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.dadosEstaticos.Item;
 import org.example.dadosEstaticos.TipoCaminhao;
 import org.example.dadosEstaticos.TipoItem;
 import org.example.dadosEstaticos.TrechoTransporte;

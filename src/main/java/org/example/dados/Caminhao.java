@@ -1,5 +1,7 @@
 package org.example.dados;
 
+//ISSO VAI PARA O LIXO (TUDO)
+
 public class Caminhao {
      String classificacao;
      double preco;

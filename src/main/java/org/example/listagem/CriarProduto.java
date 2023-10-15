@@ -1,8 +1,8 @@
 package org.example.listagem;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import org.example.dadosEstaticos.TipoItem;
+
+import java.util.*;
 import java.text.DecimalFormat;
 
 public class CriarProduto {
