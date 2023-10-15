@@ -56,4 +56,11 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
         }
         return totalCustoViagem;
     }
+
+    public int calculoDistanciaTotal() { //Função para calcular distância total
+        for (int i = 1; i < cidades.size(); i++) {
+            distanciaTotal += DistanciaCidades.calcularDistanciaEntreCidades(cidades[0], cidades[i]);
+        }
+        return distanciaTotal;
+    }
 }
