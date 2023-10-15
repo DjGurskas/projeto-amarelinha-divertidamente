@@ -16,7 +16,7 @@ public class DistanciaCidades {
         BufferedReader reader = null;
         try {
             ClassLoader classLoader = getClass().getClassLoader();
-            InputStream csv = classLoader.getResourceAsStream("distanciaCidades.csv");
+            InputStream csv = classLoader.getResourceAsStream("distanciasCidades.csv");
 
             reader = new BufferedReader(new InputStreamReader(csv));
 
