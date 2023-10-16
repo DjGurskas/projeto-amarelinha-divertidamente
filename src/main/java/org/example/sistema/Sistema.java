@@ -104,9 +104,7 @@ public class Sistema {
                 System.out.println("Peso total dos produtos: " + df.format(pesoTotalSaida) + " kg");
             } else {
                 System.out.println("Opção inválida! Tente novamente.");
-            }
-
+           }
         }
     }
-
 }
