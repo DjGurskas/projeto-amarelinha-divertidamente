@@ -28,7 +28,7 @@ public class Sistema {
 
 
         while (true) {
-            System.out.println(" .:Bem-vindo(a) ao Amarelinha Transportes:.\n" +
+            System.out.println("\n.:Bem-vindo(a) ao Amarelinha Transportes:.\n" +
                     "1. Adicionar Produto \n" +
                     "2. Remover Produto \n" +
                     "3. Lista dos Produtos Cadastrados \n" +
@@ -88,7 +88,7 @@ public class Sistema {
                 }
                 System.out.println("Peso total dos produtos: " + df.format(pesoTotal) + " kg");
             } else if (opcao == 4) {
-                System.out.println("A lista de caminhões ideais para o peso total dos produtos são: " + TipoCaminhao.listaCaminhao(pesoTotalSaida) + "\n");
+                System.out.println("A lista de caminhões ideais para o peso total dos produtos são: " + TipoCaminhao.listaCaminhao(pesoTotalSaida));
             } else if (opcao == 5) {
                 // Consultar Trechos
                 //System.out.println("Valor do transporte: " + tipoCaminhao.getPrecoPorQuilometro() * distancia);
@@ -103,6 +103,7 @@ public class Sistema {
                 // e calcular dps o custo com base no caminhão escolhido
                 int distancia = distanciacidades.calcularDistanciaEntreCidades(cidade1, cidade2);
                 System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + distancia + " KM.");
+                System.out.println("O preço total da viagem será de: R$" + TipoCaminhao.custoTotal(distancia));
             } else if (opcao == 7) {
                 // Sair do programa
                 System.exit(0);

@@ -8,7 +8,7 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
     PEQUENO(5.83, 1000),
     MEDIO(13.42, 4000),
     GRANDE(29.21, 10000);
-    public double totalCustoViagem = 0;
+    public static double totalCustoViagem = 0;
 
     private double precoPorQuilometro, capacidadeMaxima;
     TipoCaminhao(double precoQuilometro, double capacidadeMaxima) {
@@ -53,7 +53,7 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
         }
     }
     public static double custoTotal(int distanciaTotal){ //Função para calcular o valor total da viagem.
-        double totalCustoViagem = 0;
+        totalCustoViagem = 0;
         for (int i = 0; i < caminhoes.size(); i++) {
             totalCustoViagem += distanciaTotal * TipoCaminhao.caminhoes.get(i).precoPorQuilometro;
         }
