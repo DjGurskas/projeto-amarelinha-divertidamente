@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.dadosEstaticos.DistanciaCidades;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,9 +13,9 @@ import java.util.Scanner;
 //Aqui é onde vai ficar a listas de cidades
 
 public class SistemaTransporte {
-   // public List<Transporte> transportes;
+
     public SistemaTransporte() {
-    //transportes = new ArrayList<>();
+
     }
     public static void main(String[] args) {
         SistemaTransporte sistema = new SistemaTransporte();
@@ -60,6 +62,8 @@ public class SistemaTransporte {
     }
 
     public void consultarTrechos(Scanner scan){
+        DistanciaCidades distanciacidades = new DistanciaCidades(); //distancia entre as cidades
+        distanciacidades.exibirCidades();
         //implementação da consulta de trechos aqui
         System.out.print("Digite a cidade de origem: ");
         String origem = scan.nextLine();
@@ -73,3 +77,8 @@ public class SistemaTransporte {
         System.out.print("Digite a cidade de origem: ");
     }
 }
+
+//listagem das cidades
+//interface
+//teste unitário
+//você deseja adicionar uma parada(cidade)

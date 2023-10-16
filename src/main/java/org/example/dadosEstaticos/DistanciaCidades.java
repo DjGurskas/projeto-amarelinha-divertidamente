@@ -42,18 +42,20 @@ public class DistanciaCidades {
             System.out.println("Erro ao ler o arquivo:" + exception);
         }
     }
-    public static int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
 
-            try {
-                int indiceDaCidadeUm = this.indexOf(cidadeUm);
-                int indiceDaCidadeDois = this.indexOf(cidadeDois);
-                return Integer.parseInt(linhas[indiceDaCidadeDois + 1][indiceDaCidadeUm]);
-            } catch (NumberFormatException e) {
-                // Trate erros de conversão ou outros problemas.
-                System.out.println("Erro ao calcular a distância: " + e.getMessage());
-                return -1;
-            }
+    public int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
+
+        try {
+            int indiceDaCidadeUm = this.indexOf(cidadeUm);
+            int indiceDaCidadeDois = this.indexOf(cidadeDois);
+            return Integer.parseInt(linhas[indiceDaCidadeDois + 1][indiceDaCidadeUm]);
+        } catch (NumberFormatException e) {
+            // Trate erros de conversão ou outros problemas.
+            System.out.println("Erro ao calcular a distância: " + e.getMessage());
+            return -1;
+        }
     }
+
     private int indexOf(String cidade) {
 
         String[] cabecalho = this.linhas[0];
@@ -62,7 +64,7 @@ public class DistanciaCidades {
                 return i; // posicao da cidade
             }
         }
-
         return -1; // cidade não existe
     }
 }
+
