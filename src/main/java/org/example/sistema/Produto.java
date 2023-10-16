@@ -1,7 +1,5 @@
-package org.example.listagem;
-import java.util.Scanner;
+package org.example.sistema;
 
-//Referencia java
 public class Produto {
     private String nome;
     private double peso;
@@ -29,11 +27,3 @@ public class Produto {
         this.quantidade = quantidade;
     }
 }
-/*
-
-        ──────▄▀▄─────▄▀▄
-        ─────▄█░░▀▀▀▀▀░░█▄
-        ─▄▄──█░░░░░░░░░░░█──▄▄ Marco Marchi passou por aqui.
-        █▄▄█─█░░▀░░┬░░▀░░█─█▄▄█
-
- */
