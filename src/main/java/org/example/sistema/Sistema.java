@@ -1,6 +1,8 @@
 package org.example.sistema;
 
 import org.example.dadosEstaticos.DistanciaCidades;
+import org.example.dadosEstaticos.TipoCaminhao;
+
 import static org.example.sistema.Metodos.procurarProdutoPorNome;
 import static org.example.sistema.Metodos.removerProduto;
 
@@ -29,9 +31,9 @@ public class Sistema {
             System.out.println(" .:Bem-vindo(a) ao Amarelinha Transportes:.\n" +
                     "1. Adicionar Produto \n" +
                     "2. Remover Produto \n" +
-                    "3. Listar Produtos \n" +
-                    "4. Consultar Trecho e Modalidade \n" +
-                    "5. Cadastrar Transporte \n" +
+                    "3. Lista dos Produtos Cadastrados \n" +
+                    "4. Cadastrar Transporte \n" +
+                    "5. Consultar e Cadastrar Cidades \n" +
                     "6. Dados Estatísticos \n" +
                     "7. Sair do programa \n");
             System.out.print("Escolha uma opção: ");
@@ -58,6 +60,12 @@ public class Sistema {
                     produtoAdicionar.setQuantidade(quantidade);
                     produtosSelecionados.add(produtoAdicionar);
                     System.out.println("Produto adicionado: " + produtoAdicionar.getNome() + " (Quantidade: " + quantidade + ")");
+                    DecimalFormat df = new DecimalFormat("#,##0.00");
+                    for (Produto produto : produtosSelecionados) {
+                        double pesoProduto = produto.getPeso() * produto.getQuantidade();
+                        pesoTotalSaida += pesoProduto;
+                    }
+                    System.out.println("Peso total dos produtos: " + df.format(pesoTotalSaida) + " kg");
                 } else {
                     System.out.println("Produto não encontrado. Tente novamente.");
                 }
@@ -80,6 +88,8 @@ public class Sistema {
                 }
                 System.out.println("Peso total dos produtos: " + df.format(pesoTotal) + " kg");
             } else if (opcao == 4) {
+                System.out.println("A lista de caminhões ideais para o peso total dos produtos são: " + TipoCaminhao.listaCaminhao(pesoTotalSaida) + "\n");
+            } else if (opcao == 5) {
                 // Consultar Trechos
                 //System.out.println("Valor do transporte: " + tipoCaminhao.getPrecoPorQuilometro() * distancia);
                 //TipoCaminhao.custoTotal(distancia);
@@ -95,13 +105,7 @@ public class Sistema {
                 System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + distancia + " KM.");
             } else if (opcao == 7) {
                 // Sair do programa
-                // Calcular e exibir o peso total dos produtos
-                DecimalFormat df = new DecimalFormat("#,##0.00");
-                for (Produto produto : produtosSelecionados) {
-                    double pesoProduto = produto.getPeso() * produto.getQuantidade();
-                    pesoTotalSaida += pesoProduto;
-                }
-                System.out.println("Peso total dos produtos: " + df.format(pesoTotalSaida) + " kg");
+                System.exit(0);
             } else {
                 System.out.println("Opção inválida! Tente novamente.");
            }

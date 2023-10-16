@@ -16,15 +16,15 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
         this.capacidadeMaxima = capacidadeMaxima;
     }
 
-    static List<TipoCaminhao> caminhoes = new ArrayList<>(); //Lista com os caminhões utilizados na viagem.
-    public static double pesoTotal = 2000; //Variavel de peso total dos itens. Deve ser substituido futuramente.
+    static final List<TipoCaminhao> caminhoes = new ArrayList<>(); //Lista com os caminhões utilizados na viagem.
 
-    public static List<TipoCaminhao> listaCaminhao(){ //função para retornar os caminhões ideais para a viagem.
-        caminhaoIdeal();
+    public static List<TipoCaminhao> listaCaminhao(double pesoTotal){ //função para retornar os caminhões ideais para a viagem.
+        caminhaoIdeal(pesoTotal);
         return caminhoes;
     }
 
-    public static TipoCaminhao caminhaoIdeal() { //Função com condições para descobrir os caminhões ideais.
+    public static void caminhaoIdeal(double pesoTotal) { //Função com condições para descobrir os caminhões ideais.
+        caminhoes.removeAll(caminhoes);
         while (pesoTotal > 0) {
             if (pesoTotal <= PEQUENO.capacidadeMaxima) {
                 pesoTotal -= PEQUENO.capacidadeMaxima;
@@ -47,9 +47,10 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
             else if (pesoTotal <= GRANDE.capacidadeMaxima || pesoTotal > GRANDE.capacidadeMaxima) {
                 pesoTotal -= GRANDE.capacidadeMaxima;
                 caminhoes.add(TipoCaminhao.GRANDE);
+            } else {
+                System.out.println("Algo deu errado, verifique se os itens foram cadastrados.");
             }
         }
-        return null;
     }
     public static double custoTotal(int distanciaTotal){ //Função para calcular o valor total da viagem.
         double totalCustoViagem = 0;
