@@ -1,9 +1,9 @@
 package org.example.sistema;
 
 public class Produto {
-    private String nome;
-    private double peso;
-    private int quantidade;
+    public String nome;
+    public double peso;
+    public int quantidade;
 
     public Produto(String nome, double peso) {
         this.nome = nome;

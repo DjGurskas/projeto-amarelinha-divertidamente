@@ -1,12 +1,19 @@
 package org.example.sistema;
 
 import org.example.dadosEstaticos.DistanciaCidades;
+import static org.example.sistema.Metodos.procurarProdutoPorNome;
+import static org.example.sistema.Metodos.removerProduto;
 
 import java.util.*;
 import java.text.DecimalFormat;
 
+
+
 public class Sistema {
     public static void main(String[] args) {
+        List<Produto> produtosSelecionados = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        double pesoTotalSaida = 0.0;
 
         Produto celular = new Produto("Celular", 0.7);
         Produto geladeira = new Produto("Geladeira", 50);
@@ -17,10 +24,6 @@ public class Sistema {
         Produto playstation5 = new Produto("PlayStation 5", 3.9);
         Produto nintendoSwitch = new Produto("Nintendo Switch", 0.3);
 
-
-        List<Produto> produtosSelecionados = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        double pesoTotalSaida = 0.0;
 
         while (true) {
             System.out.println(" .:Bem-vindo(a) ao Amarelinha Transportes:.\n" +
@@ -47,20 +50,24 @@ public class Sistema {
                         "Nintendo Switch \n");
                 System.out.print("Digite o nome do produto para ser adicionado: ");
                 String nomeAdicionar = scanner.nextLine();
-                Produto produtoAdicionar = procurarProdutoPorNome(nomeAdicionar, celular, geladeira, airFryer, cadeira, luminaria, lavadoraRoupa, playstation5, nintendoSwitch);
+                Produto produtoAdicionar = procurarProdutoPorNome(nomeAdicionar, celular, geladeira, airFryer,
+                        cadeira, luminaria, lavadoraRoupa, playstation5, nintendoSwitch);
                 if (produtoAdicionar != null) {
                     System.out.print("Digite a quantidade desejada: ");
                     int quantidade = scanner.nextInt();
                     produtoAdicionar.setQuantidade(quantidade);
                     produtosSelecionados.add(produtoAdicionar);
                     System.out.println("Produto adicionado: " + produtoAdicionar.getNome() + " (Quantidade: " + quantidade + ")");
-                    System.out.println("\n");
                 } else {
                     System.out.println("Produto não encontrado. Tente novamente.");
                 }
             } else if (opcao == 2) {
                 // Remover produto
-
+                System.out.print("Digite o nome do produto que deseja remover: ");
+                String nomeRemover = scanner.nextLine();
+                System.out.print("Digite a quantidade desejada: ");
+                int quantidadeRemover = scanner.nextInt();
+                removerProduto(nomeRemover, quantidadeRemover, produtosSelecionados);
             } else if (opcao == 3) {
                 // Ver lista dos produtos selecionados
                 System.out.println("Produtos selecionados para transporte:");
@@ -73,8 +80,10 @@ public class Sistema {
                 }
                 System.out.println("Peso total dos produtos: " + df.format(pesoTotal) + " kg");
             } else if (opcao == 4) {
-               // Consultar Trechos
-                DistanciaCidades distanciacidades = new DistanciaCidades(); //distancia entre as cidades
+                // Consultar Trechos
+                //System.out.println("Valor do transporte: " + tipoCaminhao.getPrecoPorQuilometro() * distancia);
+                //TipoCaminhao.custoTotal(distancia);
+                DistanciaCidades distanciacidades = new DistanciaCidades();
                 distanciacidades.exibirCidades();
                 System.out.println("Trechos disponíveis para transporte: ");
                 System.out.print("Selecione a cidade de partida: ");
@@ -84,7 +93,7 @@ public class Sistema {
                 // e calcular dps o custo com base no caminhão escolhido
                 int distancia = distanciacidades.calcularDistanciaEntreCidades(cidade1, cidade2);
                 System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + distancia + " KM.");
-            }else if (opcao == 7) {
+            } else if (opcao == 7) {
                 // Sair do programa
                 // Calcular e exibir o peso total dos produtos
                 DecimalFormat df = new DecimalFormat("#,##0.00");
@@ -92,26 +101,12 @@ public class Sistema {
                     double pesoProduto = produto.getPeso() * produto.getQuantidade();
                     pesoTotalSaida += pesoProduto;
                 }
-                System.out.println("Peso total dos produtos ao sair do programa: " + df.format(pesoTotalSaida) + " kg");
-                System.out.println("Obrigado por usar a Amarelinha. Volte sempre!");
-                break;
+                System.out.println("Peso total dos produtos: " + df.format(pesoTotalSaida) + " kg");
             } else {
-                System.out.println("Opção inválida. Tente novamente.");
+                System.out.println("Opção inválida! Tente novamente.");
             }
-        }
 
-        scanner.close();
+        }
     }
 
-    // Método pra procurar o produto pelo nome
-    public static Produto procurarProdutoPorNome(String nome, Produto... produtos) {
-        for (Produto produto : produtos) {
-            if (produto.getNome().equalsIgnoreCase(nome)) {
-                return new Produto(produto.getNome(), produto.getPeso());
-            }
-        }
-        return null; // SE não achar o produto
-    }
 }
-
-
