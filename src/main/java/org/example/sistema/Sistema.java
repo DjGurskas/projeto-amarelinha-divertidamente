@@ -21,7 +21,7 @@ public class Sistema {
         Produto geladeira = new Produto("Geladeira", 50);
         Produto airFryer = new Produto("Air Fryer", 3.5);
         Produto cadeira = new Produto("Cadeira", 5.0);
-        Produto luminaria = new Produto("Luminária", 0.8);
+        Produto luminaria = new Produto("Luminaria", 0.8);
         Produto lavadoraRoupa = new Produto("Lavadora de Roupa", 15);
         Produto playstation5 = new Produto("PlayStation 5", 3.9);
         Produto nintendoSwitch = new Produto("Nintendo Switch", 0.3);
@@ -47,7 +47,7 @@ public class Sistema {
                         "Celular \n" +
                         "Geladeira \n" +
                         "Air Fryer \n" +
-                        "Luminária \n" +
+                        "Luminaria \n" +
                         "Lavadora de Roupa \n" +
                         "Nintendo Switch \n");
                 System.out.print("Digite o nome do produto para ser adicionado: ");
