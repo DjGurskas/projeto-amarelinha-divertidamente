@@ -1,9 +1,8 @@
 package org.example;
 
 import org.example.dadosEstaticos.DistanciaCidades;
+import org.example.dadosEstaticos.TipoCaminhao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 // Vai ler o arquivo CSV
@@ -13,33 +12,30 @@ import java.util.Scanner;
 //Aqui é onde vai ficar a listas de cidades
 
 public class SistemaTransporte {
-
-    public SistemaTransporte() {
-
-    }
+    private  Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+
         SistemaTransporte sistema = new SistemaTransporte();
         sistema.iniciar();
 
     }
 
     public void iniciar(){
-        Scanner scan = new Scanner(System.in);
         boolean continuar = true;
 
         while (continuar) {
             exibirOpcoes();
-            int opcao = scan.nextInt();
-
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
             switch (opcao) {
                 case 1:
                     consultarTrechos();
                     break;
                 case 2:
-                    cadastrarTransporte(scan);
+                    cadastrarTransporte(scanner);
                     break;
                 case 3:
-                    exibirDados();
+                   // exibirDados();
                     break;
                 case 4:
                     continuar = false;
@@ -48,7 +44,7 @@ public class SistemaTransporte {
                     System.out.println("Opção incorreta! Tente novamente.");
             }
         }
-        scan.close();
+        scanner.close();
     }
 
     public void exibirOpcoes(){
@@ -61,16 +57,22 @@ public class SistemaTransporte {
 
     }
 
-    public void consultarTrechos(Scanner scan){
+    public void consultarTrechos(){
         DistanciaCidades distanciacidades = new DistanciaCidades(); //distancia entre as cidades
         distanciacidades.exibirCidades();
+        System.out.println("Trechos disponíveis para transporte: ");
         //implementação da consulta de trechos aqui
-        System.out.print("Digite a cidade de origem: ");
-        String origem = scan.nextLine();
-        System.out.print("Digite a cidade de destino: ");
-        String destino = scan.nextLine();
+        System.out.print("Selecione a cidade de partida: ");
+        String cidade1 = scanner.nextLine();
+        System.out.print("Selecione a cidade de destino: ");
+        String cidade2 = scanner.nextLine();
         // buscar as cidades e calcular a distância
         // e calcular dps o custo com base no caminhão escolhido
+
+        int distancia = distanciacidades.calcularDistanciaEntreCidades(cidade1, cidade2);
+        System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + distancia + " KM.");
+        //System.out.println("Valor do transporte: " + tipoCaminhao.getPrecoPorQuilometro() * distancia);
+        //TipoCaminhao.custoTotal(distancia);
     }
 
     public void cadastrarTransporte(Scanner scan){
