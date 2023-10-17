@@ -101,15 +101,25 @@ public class Sistema {
                 System.out.print("Selecione a cidade de destino: ");
                 String cidade2 = scanner.nextLine();
                 // e calcular dps o custo com base no caminhão escolhido
-                int distancia = distanciacidades.calcularDistanciaEntreCidades(cidade1, cidade2);
-                System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + distancia + " KM.");
-                System.out.println("O preço total da viagem será de: R$" + TipoCaminhao.custoTotal(distancia));
+                System.out.println("A distancia entre " + cidade1 + " e " + cidade2 + " é de " + DistanciaCidades.distanciaTotal(cidade1, cidade2) + " KM.");
+                System.out.println("O preço total da viagem será de: R$" + TipoCaminhao.custoTotal(DistanciaCidades.distancia));
+            } else if (opcao == 6) {
+                System.out.println("RELATÓRIO DE TRANSPORTE" +
+                        "\nO preço total da viagem será de: R$" + TipoCaminhao.getTotalCustoViagem() +
+                        "\nO custo médio por km é de: R$" + (TipoCaminhao.getTotalCustoViagem()/DistanciaCidades.distancia) +
+                        "\nOs caminhões que serão utilizados serão: " + TipoCaminhao.caminhoes +
+                        "\nA lista de produtos a serem transportados é: ");
+                DecimalFormat df = new DecimalFormat("#,##0.00");
+                for (Produto produto : produtosSelecionados) {
+                    double pesoProduto = produto.getPeso() * produto.getQuantidade();
+                    System.out.println("Nome: " + produto.getNome() + " (Quantidade: " + produto.getQuantidade() + "), Peso Total: " + df.format(pesoProduto) + " kg");
+                }
             } else if (opcao == 7) {
                 // Sair do programa
                 System.exit(0);
             } else {
                 System.out.println("Opção inválida! Tente novamente.");
-           }
+            }
         }
     }
 }

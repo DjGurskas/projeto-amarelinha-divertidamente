@@ -1,12 +1,15 @@
 package org.example.dadosEstaticos;
 
+import org.example.sistema.Sistema;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 // Nome e distancia entre as cidades. Lendo arquivo CSV.
 public class DistanciaCidades {
-    private String[][] linhas = new String[25][24];
+    private static String[][] linhas = new String[25][24];
+    public static int distancia = 0;
 
     public void exibirCidades() {
         carregaCidades();
@@ -43,11 +46,11 @@ public class DistanciaCidades {
         }
     }
 
-    public int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
+    public static int calcularDistanciaEntreCidades(String cidadeUm, String cidadeDois) {
 
         try {
-            int indiceDaCidadeUm = this.indexOf(cidadeUm);
-            int indiceDaCidadeDois = this.indexOf(cidadeDois);
+            int indiceDaCidadeUm = indexOf(cidadeUm);
+            int indiceDaCidadeDois = indexOf(cidadeDois);
             return Integer.parseInt(linhas[indiceDaCidadeDois + 1][indiceDaCidadeUm]);
         } catch (NumberFormatException e) {
             // Trate erros de conversão ou outros problemas.
@@ -56,15 +59,20 @@ public class DistanciaCidades {
         }
     }
 
-    private int indexOf(String cidade) {
+    private static int indexOf(String cidade) {
 
-        String[] cabecalho = this.linhas[0];
+        String[] cabecalho = linhas[0];
         for (int i = 0; i < cabecalho.length; i++) {
             if (cabecalho[i].equalsIgnoreCase(cidade)) {
                 return i; // posicao da cidade
             }
         }
         return -1; // cidade não existe
+    }
+
+    public static int distanciaTotal(String cidade1, String cidade2) {
+         distancia = calcularDistanciaEntreCidades(cidade1, cidade2);
+         return distancia;
     }
 }
 

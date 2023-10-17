@@ -8,7 +8,11 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
     PEQUENO(5.83, 1000),
     MEDIO(13.42, 4000),
     GRANDE(29.21, 10000);
-    public static double totalCustoViagem = 0;
+    private static double totalCustoViagem = 0;
+
+    public static double getTotalCustoViagem() {
+        return totalCustoViagem;
+    }
 
     private double precoPorQuilometro, capacidadeMaxima;
     TipoCaminhao(double precoQuilometro, double capacidadeMaxima) {
@@ -16,7 +20,7 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
         this.capacidadeMaxima = capacidadeMaxima;
     }
 
-    static final List<TipoCaminhao> caminhoes = new ArrayList<>(); //Lista com os caminhões utilizados na viagem.
+    public static final List<TipoCaminhao> caminhoes = new ArrayList<>(); //Lista com os caminhões utilizados na viagem.
 
     public static List<TipoCaminhao> listaCaminhao(double pesoTotal){ //função para retornar os caminhões ideais para a viagem.
         caminhaoIdeal(pesoTotal);
@@ -59,10 +63,4 @@ public enum TipoCaminhao { // tipo do caminhão com seu nome e capacidade maxima
         }
         return totalCustoViagem;
     }
-
-
-    // int distancia = distanciacidades.calcularDistanciaEntreCidades(cidade1, cidade2);
-
-
-
 }
