@@ -116,6 +116,7 @@ public class Sistema {
                 }
             } else if (opcao == 7) {
                 // Sair do programa
+                scanner.close();
                 System.exit(0);
             } else {
                 System.out.println("Opção inválida! Tente novamente.");
